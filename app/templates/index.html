@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="" method="post" class="form-signin">
+  {% for error in form.errors %}
+    <div class="alert alert-info">Please insert {{error}}</div>
+  {% endfor %}
+  {{form.hidden_tag()}}
+  {{form.subject(class_='form-control')}}
+  {{form.priority(class_='form-control')}}
+  <input class="btn btn-primary btn-block" type="submit" value="Add">
+</form>
+
+{% for item in todo %}
+  <div class="row" style="margin-top:2px;">
+    <div class="col-md-4 col-md-offset-4">
+      <span style="width:90px;display:inline-block;">
+        <a href="{{url_for('delete', id = item.id)}}"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
+        <span class="label label-{% if item.priority == 0 %}success">done{% elif item.priority == 1 %}default">low{% elif item.priority == 2 %}primary">normal{% elif item.priority == 3 %}danger">high{% endif %}</span>
+        <a href="{{url_for('done', id = item.id)}}"><i class="fa fa-check-square fa-lg text-success"></i></a>
+      </span>
+    | {{item.subject}}</div>
+  </div>
+{% endfor %}
+{% endblock %}
