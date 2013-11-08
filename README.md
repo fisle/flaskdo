@@ -9,4 +9,4 @@ Features:
 
 Dependencies are listed in requirements.txt
 
-
+Run db_create.py first to create database.
