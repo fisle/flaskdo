@@ -7,6 +7,14 @@ Features:
   - Multiple users
   - Simple priorities
 
-Dependencies are listed in requirements.txt
+Installation
+=====
+    virtualenv env
 
-Run db_create.py first to create database.
+    source env/bin/activate
+
+    pip install -r requirements.txt
+
+    ./db_create.py
+
+    ./run.py
