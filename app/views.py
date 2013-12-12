@@ -23,10 +23,9 @@ def before_request():
 def index():
   form = TodoForm()
   if form.validate_on_submit():
-    todo = Todo(subject = form.subject.data, priority = form.priority.data, user = g.user.id)
+    todo = Todo(subject = form.subject.data, priority = form.priority.data, user = g.user.id, deadline = form.deadline.data)
     db.session.add(todo)
     db.session.commit()
-    flash('added!')
     redirect(url_for('index'))
   todo = Todo.query.filter_by(user = g.user.id).order_by(Todo.priority.desc()).all()
   return render_template('index.html', todo = todo, form = form)

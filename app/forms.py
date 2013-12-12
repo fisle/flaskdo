@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form
 from app import db
-from wtforms import TextField, PasswordField, validators, SelectField, BooleanField
+from wtforms import TextField, PasswordField, validators, SelectField, BooleanField, DateTimeField
 from wtforms.validators import Required, EqualTo, Length
 from app.models import User
 
@@ -29,3 +29,4 @@ class SignupForm(Form):
 class TodoForm(Form):
   subject = TextField('subject', validators = [Required()])
   priority = SelectField('priority', validators = [Required()], choices=[('1', 'Low'), ('2', 'Normal'), ('3', 'High')])
+  deadline = DateTimeField('deadline', format = '%d.%m.%Y %H:%M')

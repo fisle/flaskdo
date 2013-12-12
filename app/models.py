@@ -24,3 +24,4 @@ class Todo(db.Model):
   user = db.Column(db.Integer)
   subject = db.Column(db.String(64))
   priority = db.Column(db.Integer)
+  deadline = db.Column(db.String(64))
