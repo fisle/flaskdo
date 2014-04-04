@@ -36,7 +36,6 @@ def delete(id):
   todo = Todo(id = id, user = g.user.id)
   Todo.query.filter_by(id = id, user = g.user.id).delete()
   db.session.commit()
-  flash('Entry deleted')
   return redirect(url_for('index'))
 
 @app.route('/done/<int:id>/')
@@ -45,7 +44,6 @@ def done(id):
   todo = Todo(id = id, user = g.user.id, priority = 0)
   db.session.merge(todo)
   db.session.commit()
-  flash('Entry marked as done')
   return redirect(url_for('index'))
 
 @app.route('/signup', methods = ['GET', 'POST'])

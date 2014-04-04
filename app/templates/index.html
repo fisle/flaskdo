@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="" method="post" class="form-signin">
+<form action="" method="post" class="form-inline">
   {% for error in form.errors %}
     <div class="alert alert-info">Please insert {{error}}</div>
   {% endfor %}
